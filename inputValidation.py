@@ -18,20 +18,17 @@ def validate(name, favday, birthday):
         valid = False
         values_invalid.append("INVALID FAVORITE DAY") 
 
-    validDate = True #change the date validation for months
-    if (not(datetime.datetime(int(year), int(month), int(day)))):
-        valid = False
-        values_invalid.append("INVALID DATE")
     try:
         day, month, year = birthday.split('/')
         datetime.datetime(int(year), int(month), int(day)) #checking if the date is valid using the datetime module
     except ValueError:
-        values_invalid.append("INVALID DATE")
+        date = input("PLEASE ENTER A VALID DATE!!\nPlease enter your birthday(dd/mm/yyyy):")
+        valid = False
 
     result = [valid, values_invalid]
     return result
 
 def datefound(birthday):
     day, month, year = birthday.split('/')
-    datefound = doomsday.doomsday(int(year))
+    datefound = doomsday.days[doomsday.day_of_week(int(day),int(month),int(year))]
     return datefound

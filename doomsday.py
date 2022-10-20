@@ -29,3 +29,9 @@ if __name__=='__main__':
     print(doomsday(1946))
     print(days[day_of_week(12,4,1861)])
     print(days[day_of_week(18,9,1985)])
+
+def zellersAlgorithm(day, month, year):
+    if month < 3:
+        month += 12
+        year -= 1
+    return days[(day + 2*month + 3*(month+1)//5 + year + year//4 - year//100 + year//400) % 7]

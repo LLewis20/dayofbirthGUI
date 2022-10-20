@@ -1,13 +1,14 @@
 import doomsday
 import inputValidation as iv
 
-username = iv.getname()
-birthday = iv.getdate()
-favday = iv.getfavday()
+username = input("Please enter your first name: ")
+birthday = input("Please enter your birthday(dd/mm/yyyy): ")
+favday = input("Please enter your favorite day: ")
 
 day, month, year = birthday.split('/')
 datefound = doomsday.days[doomsday.day_of_week(int(day),int(month),int(year))]
 print("\n-------------------USER'S BIRTHDAY----------------------------")
+print(doomsday.zellersAlgorithm(int(day),int(month),int(year)))
 if(datefound == favday):
     print("\n"+username, "you were born on a",(datefound.lower()).title(),"\nCongrats you were born on your favorite day \N{thumbs up sign}!!!!")
 else:
